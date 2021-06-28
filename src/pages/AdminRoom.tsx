@@ -3,6 +3,9 @@ import { Link } from "react-router-dom";
 
 import logoImg from "../assets/images/logo.svg";
 import deleteImg from "../assets/images/delete.svg";
+import checkImg from "../assets/images/check.svg";
+import answerImg from "../assets/images/answer.svg";
+import deniedImg from "../assets/images/denied.svg";
 
 import { Button } from "../components/Button";
 import { Question } from "../components/Question";
@@ -36,6 +39,10 @@ export function AdminRoom() {
     (async () => {
       const roomRef = await database.ref(`rooms/${roomId}`).get();
 
+      if (!roomRef.val()) {
+        history.push("/");
+      }
+
       if (roomRef.val().authorId === user?.id) {
         setIsAdmin(true);
         setLoading(false);
@@ -45,7 +52,7 @@ export function AdminRoom() {
         setLoading(false);
       }
     })();
-  }, [roomId, user]);
+  }, [roomId, user, history]);
 
   async function handleEndRoom() {
     await database.ref(`rooms/${roomId}`).update({
@@ -61,12 +68,24 @@ export function AdminRoom() {
     }
   }
 
-  //novo
+  async function handleCheckQuestionAsAnswered(questionId: string) {
+    await database.ref(`rooms/${roomId}/questions/${questionId}`).update({
+      isAnswered: true,
+    });
+  }
+
+  async function handleHighlightQuestion(questionId: string) {
+    await database.ref(`rooms/${roomId}/questions/${questionId}`).update({
+      isHighlighted: true,
+    });
+  }
+
+  //Loading
   if (loading) {
     return <p>Carregando ...</p>;
   }
 
-  //novo
+  //Unauthorized
   if (!isAdmin) {
     return (
       <div id="page-room">
@@ -75,13 +94,17 @@ export function AdminRoom() {
             <Link to="/">
               <img className="logo" src={logoImg} alt="Letmeask" />
             </Link>
-            <div>
-              <RoomCode code={roomId} />
-            </div>
+            <RoomCode code={roomId} />
           </div>
         </header>
         <main>
-          <h1 className="unauthorized">Sem permissão</h1>
+          <div className="message">
+            <div className="message-title">
+              <h1>Sem permissão</h1>
+              <p>Parece que seu nome não está na lista =(</p>
+            </div>
+            <img src={deniedImg} className="message-img" alt="" />
+          </div>
         </main>
       </div>
     );
@@ -116,7 +139,28 @@ export function AdminRoom() {
                 key={question.id}
                 content={question.content}
                 author={question.author}
+                isAnswered={question.isAnswered}
+                isHighlighted={question.isHighlighted}
               >
+                {!question.isAnswered && (
+                  <>
+                    <button
+                      type="button"
+                      onClick={() => handleCheckQuestionAsAnswered(question.id)}
+                    >
+                      <img
+                        src={checkImg}
+                        alt="Marcar pergunta como respondida"
+                      />
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => handleHighlightQuestion(question.id)}
+                    >
+                      <img src={answerImg} alt="Dar destaque à pergunta " />
+                    </button>
+                  </>
+                )}
                 <button
                   type="button"
                   onClick={() => handleDeleteQuestion(question.id)}
