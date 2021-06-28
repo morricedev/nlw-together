@@ -89,7 +89,21 @@ export function Room() {
   }, [roomId, history]);
 
   if (loading) {
-    return <p>Carregando ...</p>;
+    return (
+      <div id="page-room">
+        <header>
+          <div className="content">
+            <Link to="/">
+              <img className="logo" src={logoImg} alt="Letmeask" />
+            </Link>
+            <RoomCode code={roomId} />
+          </div>
+        </header>
+        <main className="spinner-body">
+          <div className="spinner"></div>
+        </main>
+      </div>
+    );
   }
 
   if (isEnded) {
