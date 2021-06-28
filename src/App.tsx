@@ -5,6 +5,7 @@ import { Home } from "./pages/Home";
 import { NewRoom } from "./pages/NewRoom";
 import { Room } from "./pages/Room";
 import { AdminRoom } from "./pages/AdminRoom";
+import { NotFound404 } from "./pages/NotFound404";
 
 function App() {
   let location = useLocation();
@@ -31,6 +32,7 @@ function App() {
         <Route path="/rooms/new" component={NewRoom} />
         <Route path="/rooms/:id" component={Room} />
         <Route path="/admin/rooms/:id" component={AdminRoom} />
+        <Route path="*" component={NotFound404} />
       </Switch>
     </animated.div>
   ));
