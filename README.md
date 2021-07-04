@@ -61,6 +61,59 @@ Você pode visualizar o layout do projeto através do link abaixo:
 
 Lembrando que você precisa ter uma conta no [Figma](http://figma.com/).
 
+## ➕ Extra
+
+Para complementar o projeto, resolvi fazer algumas implementações:
+
+<p>✔ Logout</p>
+<p>✔ Toast</p>
+<p>✔ Rotas animadas</p>
+<p>✔ Página 404</p>
+<p>✔ Página de unauthorized ao acessar a sala de admin sem ter permissão</p>
+<p>✔ Página de sala encerrada ao acessar uma sala encerrada a partir da URL</p>
+
+<h2 align="center">Toast</h2>
+<h3>Ao tentar acessar uma sala inexistente</h3>
+<p align=""center>
+<img alt="Letmeask" src=".github/gif-sala-nao-encontrada.gif" />
+</p>
+
+<h3>Ao tentar acessar uma sala encerrada</h3>
+<p align=""center>
+<img alt="Letmeask" src=".github/gif-sala-encerrada.gif" />
+</p>
+
+<h3>Ao deslogar</h3>
+<p align=""center>
+<img alt="Letmeask" src=".github/gif-logout.gif" />
+</p>
+
+<h3>Ao copiar ID da sala</h3>
+<p align=""center>
+<img alt="Letmeask" src=".github/gif-copiado.gif" />
+</p>
+
+<h2 align="center">Páginas</h2>
+
+<h3>Ao acessar uma rota inexistente</h3>
+<p align=""center>
+<img alt="Letmeask" src=".github/gif-404.gif" />
+</p>
+
+<h3>Ao tentar acessar uma sala encerrada via URL</h3>
+<p align=""center>
+<img alt="Letmeask" src=".github/gif-404-sala-encerrada.gif" />
+</p>
+
+<h3>Ao tentar acessar a sala do admin via URL</h3>
+<p align=""center>
+<img alt="Letmeask" src=".github/gif-sem-perm.gif" />
+</p>
+
+<h2 align="center">Rotas animadas</h2>
+<p align=""center>
+<img alt="Letmeask" src=".github/gif-rotas-animadas.gif" />
+</p>
 ---
 
 Feito com 💜 by Rocketseat 👋🏻 [Participe da nossa comunidade](https://discord.gg/gKUVrzrPrU)
