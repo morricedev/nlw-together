@@ -116,4 +116,4 @@ Para complementar o projeto, resolvi fazer algumas implementações:
 </p>
 ---
 
-Feito com 💜 by Rocketseat 👋🏻 [Participe da nossa comunidade](https://discord.gg/gKUVrzrPrU)
+Feito com 💜 by Morrice 👋🏻
